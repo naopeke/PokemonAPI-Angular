@@ -1,0 +1,32 @@
+<div class="card-wrapper">
+
+
+<div class="card" style="width: 20rem;">
+    <img class="card-img-top" src="{{ childCard.sprites?.front_default }}" alt="Card image cap">
+
+    <div class="card-body">
+      <!-- <h5 class="card-title">{{ childCard.name }}</h5> -->
+      <h2 class="card-title">
+        {{ childCard.name.charAt(0).toUpperCase() + childCard.name.slice(1) }}
+      </h2>
+      <p class="card-id"># {{ childCard.id }}</p>
+
+      <p class="card-type"> 
+        <!-- let type は配列の各要素（この場合はタイプオブジェクト）を一時的な変数 type に割り当て、その変数をテンプレート内で使用できるようにします。また、let i = index はループの現在のインデックス（0から始まる）を変数 i に割り当てます。 -->
+        <span *ngFor="let type of childCard.types; let i = index">
+          <span [ngClass]="'type-' + type.type.name.toLowerCase()" class="type-background">{{ type.type.name }}</span>
+          <!-- 最後の要素以外の後ろにカンマを追加。*ngIf ディレクティブは、その条件（ここでは i < childCard.types.length - 1）が true の場合にのみ内容を表示。 -->
+          <!-- <span *ngIf="i < childCard.types.length - 1">, </span> -->
+        </span>
+      </p>
+      
+      <p class="card-abilities">Abilities:
+        <span *ngFor="let ability of childCard.abilities; let i = index">
+          {{ ability.ability.name }}
+          <span *ngIf="i < childCard.abilities.length -1">, </span>
+        </span>
+      </p>
+    </div>
+  </div>
+
+</div>

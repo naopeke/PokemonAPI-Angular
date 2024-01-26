@@ -1,0 +1,95 @@
+
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+}
+
+.type-background {
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin:2px;
+    color:white;
+    letter-spacing: 2px;
+}
+
+
+.type-default {
+    background-color: #2A1A1F;
+}
+
+.type-normal {
+    background-color: #4e4242;
+}
+
+.type-fire {
+    background-color: #8b0c03;
+}
+
+.type-figting {
+    background-color: #7a4304;
+}
+
+.type-water {
+    background-color: #058096;
+}
+
+.type-flying {
+    background-color: #0752a7;
+}
+
+.type-grass {
+    background-color: #238f31;
+}
+
+.type-poison {
+    background-color: #842bcc;
+}
+
+.type-electric {
+    background-color: #FFEA70;
+}
+
+.type-ground {
+    background-color: #835b17;
+}
+
+.type-psychic {
+    background-color: #8a309c;
+}
+
+.type-rock {
+    background-color: #06363a;
+}
+
+.type-ice {
+    background-color: #aee6f8;
+}
+
+.type-bug {
+    background-color: #098f0b;
+}
+
+.type-dragon {
+    background-color: #DA277D;
+}
+
+.type-ghost {
+    background-color: #5f188f;
+}
+
+.type-dark {
+    background-color: #3b0523;
+}
+
+.type-steel {
+    background-color: #0b3c42;
+}
+
+.type-fairy {
+    background-color: #f7b6f7;
+}

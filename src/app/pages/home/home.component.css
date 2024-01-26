@@ -1,0 +1,18 @@
+body {
+    background-color: #eff3ff;
+    height:100vh;
+}
+
+main {
+    border:2px solid border;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+span {
+    text-align: center;
+    margin-top:50px;
+    font-size: 30px;
+}
