@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
 performSearch(event:Event): void {
   event.preventDefault();
   console.log("Search button clicked", this.searchType, this.searchQuery);
+  //検索タイプが type の場合、TYPE_IDS から対応するタイプIDを取得し、そのIDに基づいてAPIを呼び出します。APIから返されたレスポンスに含まれるポケモンの名前のリストを取得し、それらの詳細情報を取得するために retrievePokemonDetails 関数を呼び出します。
   if (this.searchType === 'type') {
     if (typeof this.searchQuery === 'string') {
       const typeId = TYPE_IDS[this.searchQuery.toLowerCase()];
@@ -56,6 +57,7 @@ performSearch(event:Event): void {
       }
     }
   } else {
+  //id または name での検索の場合、入力されたクエリをAPIに渡し、handlePokemonData 関数を呼び出してレスポンスを処理します。
     this.apiService.getPokemonDetail(this.searchType, this.searchQuery).subscribe({
       next: (pokemonData) => this.handlePokemonData(pokemonData),
       error: (error) => console.error('Error:', error)
@@ -63,8 +65,9 @@ performSearch(event:Event): void {
   }
 }
 
-
+//APIからのレスポンスを受け取り、SharedPokemonService を介してアプリケーション全体で共有します。その後、詳細ページに遷移するためのルーティングを行います。
 private handlePokemonData(pokemonData: any) {
+  //取得したポケモンの詳細（pokemonData）を SharedPokemonService の changePokemonDetail メソッドを使って他のコンポーネントと共有します。
   this.sharedPokemonService.changePokemonDetail(pokemonData);
   const pokemonId = pokemonData.id;
   if (pokemonId) {
@@ -73,15 +76,16 @@ private handlePokemonData(pokemonData: any) {
   }
 }
 
-
+//タイプ検索の結果として取得されたポケモンの名前のリストに基づいて、各ポケモンの詳細情報を取得します。
 private retrievePokemonDetails(pokemonNames: string[]) {
   const pokemonDetailsList = [];
+  //リスト内の各ポケモンに対して、その名前を使ってAPIリクエストを行い、詳細情報を取得します。
   pokemonNames.forEach(name => {
     this.apiService.getPokemonDetail('name', name).subscribe(pokemonDetail => {
       pokemonDetailsList.push(pokemonDetail);
+      // ポケモンのリストが全て取得できたらSharedPokemonService の changePokemonList メソッドを使用して取得したポケモンのリストを共有し、PokemonComponentに遷移
       if (pokemonDetailsList.length === pokemonNames.length) {
         this.sharedPokemonService.changePokemonList(pokemonDetailsList);
-        // ポケモンのリストが全て取得できたらPokemonComponentに遷移
         this.router.navigate(['/pokemon']);
       }
     });

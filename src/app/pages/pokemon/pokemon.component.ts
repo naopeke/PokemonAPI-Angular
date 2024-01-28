@@ -36,7 +36,6 @@ export class PokemonComponent implements OnInit {
   // PokemonComponent の役割
 
   //   SharedPokemonService から検索結果を受け取り、pokemonDetail に格納します。
-  //   getPokemonDetail は使用されていないため、不要です。
   //   ngOnInit 内で SharedPokemonService の currentPokemonDetail を購読し、受け取ったデータを pokemonDetail に割り当てます。
 
   navigateToPokemonDetail(pokemonId: number): void {
