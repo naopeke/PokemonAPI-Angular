@@ -1,10 +1,15 @@
 <body>
-    <div class="form-wrapper">
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search by ID" aria-label="Search" #searchInput>
-            <button class="btn btn-outline-success" type="submit" (click)="displayPokemon(searchInput.value)">SEARCH</button>
-        </form>
-    </div>
+
+    <form class="d-flex" role="search">
+        <select class="form-select" [(ngModel)]="searchType" name="searchType">
+          <option value="id">ID</option>
+          <option value="name">Name</option>
+          <option value="type">Type</option>
+        </select>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchQuery" name="searchQuery">
+        <button class="btn btn-outline-success" type="submit" (click)="performSearch($event)">SEARCH</button>
+    </form>
+      
 
     <main>
         <span>Search Your Favorite Pokemon!!</span>

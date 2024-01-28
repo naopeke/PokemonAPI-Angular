@@ -1,10 +1,20 @@
 <div class="container">
-    <h1>You've got a Pokemon Card!</h1>
 
-    <div *ngIf="pokemonDetail" [ngClass]="{'card-detail': pokemonDetail}">
-        <div class="book-detail">
-            <app-card [childCard]="pokemonDetail"></app-card>
-        </div>
-    
+    <!-- 個別のポケモンの詳細を表示する部分 -->
+    <div *ngIf="pokemonDetail" class="card-wrapper">
+      <h1>You've got a Pokemon Card!</h1>
+      <app-card [childCard]="pokemonDetail"></app-card>
+  </div>
+
+  <!-- Type検索結果のリストを表示する部分 -->
+  <div *ngIf="pokemonDetailsList.length > 0" class="container">
+    <h2>Pokemons of Selected Type</h2>
+    <div class="cards-container">
+        <app-card *ngFor="let pokemonDetail of pokemonDetailsList" [childCard]="pokemonDetail"></app-card>
     </div>
 </div>
+
+
+  </div>
+      
+
